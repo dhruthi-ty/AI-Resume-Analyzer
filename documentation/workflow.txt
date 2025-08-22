@@ -1,0 +1,40 @@
+[User / PuterUser]
+       │
+       │ (creates a chat message)
+       ▼
+ ┌───────────────────────┐
+ │     ChatMessage       │
+ │-----------------------│
+ │ role: "user"          │
+ │ content: string OR    │
+ │ ChatMessageContent[]  │
+ └───────────────────────┘
+       │
+       │ (sent to AI model via PuterChatOptions)
+       ▼
+ ┌───────────────────────┐
+ │     AI Processing     │
+ │-----------------------│
+ │ model reads ChatMessage │
+ │ accesses FSItem or KVItem │
+ │ applies AI logic (e.g., │
+ │ generative AI, parsing) │
+ └───────────────────────┘
+       │
+       │ (AI generates structured response)
+       ▼
+ ┌───────────────────────┐
+ │      AIResponse       │
+ │-----------------------│
+ │ index: number          │
+ │ message: { role,       │
+ │            content,    │
+ │            annotations }│
+ │ finish_reason: string  │
+ │ usage: [{type,model,...│
+ │ via_ai_chat_service:bool│
+ └───────────────────────┘
+       │
+       │ (sent back to user interface)
+       ▼
+[User / PuterUser sees AI reply]
